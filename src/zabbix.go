@@ -39,7 +39,9 @@ func getHostID(cfg Config, hostname string) (string, error) {
 		return "", err
 	}
 	var host Hosts
-	json.Unmarshal(body, &host)
+	if err = json.Unmarshal(body, &host); err != nil {
+		return "", err
+	}
 	
 	return host.Results[0].Hostid, nil
 }
@@ -72,7 +74,10 @@ func scheduleMaintenance(cfg Config, currentTime, maintenanceTime int64, hostID,
 			return fmt.Errorf("failed to create maintenance: %s", err.Error())
 		}
 		var res Hosts
-		json.Unmarshal(body, &res)
+		if err = json.Unmarshal(body, &res); err != nil {
+			return err
+		}
+		
 		if res.Error.Data != "" {
 			return fmt.Errorf("failed to create maintenance: %s", res.Error.Data)
 		}

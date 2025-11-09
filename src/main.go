@@ -58,6 +58,11 @@ func main() {
 		os.Exit(1)
 	}
 	maintenanceTime, err := parsePeriod(currentTime, length)
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+	
 	err = scheduleMaintenance(cfg, currentTime.Unix(), maintenanceTime.Unix(), ID, hostname)
 	if err != nil {
 		log.Println(err)
