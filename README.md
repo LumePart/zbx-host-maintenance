@@ -7,11 +7,11 @@ Setup:
 * Place the latest release in the `externalscripts` folder in the Zabbix instance (usually `/lib/zabbix/externalscripts`)
   > Make sure the `zabbix` user can execute it
 * Create a new script item in Zabbix (Alerts > Scripts) that executes the program
-* The program requires 4 additional arguments 
-  1. Zabbix API URL (e.g `example.com/zabbix/api_jsonrpc.php`)
+* The program requires 4 additional arguments (enclosed in quotation marks)
+  1. Zabbix API URL (e.g `https://example.com/zabbix/api_jsonrpc.php`)
   2. API Key 
-  3. Hostname (via built-in macro) 
-  4. Maintenance period (via manual input macro)
+  3. Technical host name (via built-in macro `{HOST.HOST}`) 
+  4. Maintenance period (via {MANUALINPUT} macro)
   > It's recommended to pass the API key via a global macro
 
 ---
