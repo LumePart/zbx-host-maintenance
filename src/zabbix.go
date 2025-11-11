@@ -14,7 +14,13 @@ type Hosts struct {
 }
 
 type Result struct {
-	Hostid string `json:"hostid"`
+	Hostid string `json:"hostid,omitempty"`
+	Maintenanceids []string `json:"maintenanceids,omitempty"`
+}
+
+type Maintenance struct {
+	Result Result `json:"result"`
+	Error   Error  `json:"error"`
 }
 
 type Error struct {
@@ -42,7 +48,6 @@ func getHostID(cfg Config, hostname string) (string, error) {
 	if err = json.Unmarshal(body, &host); err != nil {
 		return "", err
 	}
-	
 	return host.Results[0].Hostid, nil
 }
 
@@ -73,7 +78,8 @@ func scheduleMaintenance(cfg Config, currentTime, maintenanceTime int64, hostID,
 		if err != nil {
 			return fmt.Errorf("failed to create maintenance: %s", err.Error())
 		}
-		var res Hosts
+		
+		var res Maintenance
 		if err = json.Unmarshal(body, &res); err != nil {
 			return err
 		}
