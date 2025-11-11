@@ -1,9 +1,9 @@
-## Quick Host Maintenance for Zabbix
+# Quick Host Maintenance for Zabbix
 
 This is a script to perform a manual host action in Zabbix (7.0+). It makes creating maintenance windows for single hosts easier.  
 The maintenance window starts immediately and ends at a user-defined time.
 
-Setup:
+## Setup:
 * Place the latest release in the `externalscripts` folder in the Zabbix instance (usually `/lib/zabbix/externalscripts`)
   > Make sure the `zabbix` user can execute it
 * Create a new script item in Zabbix (Alerts > Scripts) that executes the program
@@ -24,7 +24,11 @@ Here's an example of the script configuration:
 
 The script supports scheduling maintenance for minutes (m), hours (h), days (d) or weeks (w). They can also be combined for a more precise timeframe (e.g. `1h30m`).
 
-Troubleshooting:
+## Usage
+
+When the script has been created, it can be executed in the host context menu
+
+## Troubleshooting:
 
 When using SELinux, it could prevent the script from executing:
 
