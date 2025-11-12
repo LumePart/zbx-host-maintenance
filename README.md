@@ -11,7 +11,7 @@ The maintenance window starts immediately and ends at a user-defined time.
   1. Zabbix API URL (e.g `https://example.com/zabbix/api_jsonrpc.php`)
   2. API Key 
   3. Technical host name (via built-in macro `{HOST.HOST}`) 
-  4. Maintenance period (via {MANUALINPUT} macro)
+  4. Maintenance period (via `{MANUALINPUT}` macro)
   > It's recommended to pass the API key via a global macro
 
 ---
