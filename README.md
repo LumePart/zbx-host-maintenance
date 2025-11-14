@@ -26,7 +26,7 @@ The script supports scheduling maintenance for minutes (m), hours (h), days (d) 
 
 ## Usage
 
-When the script has been created, it can be executed in the host context menu
+When the script has been created, it can be executed from the host context menu
 
 ## Troubleshooting:
 
